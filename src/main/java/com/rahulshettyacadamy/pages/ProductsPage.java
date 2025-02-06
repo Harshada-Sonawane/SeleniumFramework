@@ -2,6 +2,7 @@ package com.rahulshettyacadamy.pages;
 
 import com.rahulshettyacadamy.utilities.WaitUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,11 +27,11 @@ public class ProductsPage extends WaitUtils {
     WebElement spinner;
 
     @FindBy(css = "[routerlink*='cart']")
-    WebElement cartButton;
+    WebElement cartHeader;
 
     By product = By.cssSelector(".mb-3");
     By addToCartBtn = By.cssSelector(".card-body button:last-of-type");
-   // By toasterMsg = By.cssSelector("#toast-container");
+    By toasterMsg = By.cssSelector("#toast-container");
 
     public List<WebElement> getProductsList() {
         waitForVisibilityOfElementLocated(product);
@@ -42,15 +43,19 @@ public class ProductsPage extends WaitUtils {
                 product.findElement(By.cssSelector("b")).getText().equals(productName)).findFirst().orElse(null);
     }
 
-    public void clickAddToCart(String productName) {
-        WebElement prodToAdd = addProductToCart(productName);
-        prodToAdd.findElement(addToCartBtn).click();
-        waitForInvisibilityOfElement(spinner);
-        //waitForVisibilityOfElementLocated(toasterMsg);
+    public void clickAddToCart(String productName) throws InterruptedException {
+        try {
+            WebElement prodToAdd = addProductToCart(productName);
+            prodToAdd.findElement(addToCartBtn).click();
+            waitForInvisibilityOfElement(spinner);
+            waitForVisibilityOfElementLocated(toasterMsg);
+        } catch (TimeoutException te) {
+            te.printStackTrace();
+        }
     }
 
-    public void clickCartButton() {
-        cartButton.click();
+    public void clickCartHeader() {
+        cartHeader.click();
     }
 
 }

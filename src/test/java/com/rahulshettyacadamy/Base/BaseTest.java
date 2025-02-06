@@ -59,6 +59,9 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit(); //Closes all browser windows
+            driver = null; //Ensures a fresh driver for the next test
+        }
     }
 }

@@ -4,12 +4,13 @@ import com.rahulshettyacadamy.pages.*;
 import org.openqa.selenium.WebDriver;
 
 public class PageObjectManager {
-    private WebDriver driver;
+    private final WebDriver driver;
     private LandingPage landingPage;
     private ProductsPage productsPage;
     private MyCartPage myCartPage;
     private CheckOutPage checkOutPage;
     private OrderHistoryPage orderHistoryPage;
+    private OrdersPage ordersPage;
 
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
@@ -33,5 +34,9 @@ public class PageObjectManager {
 
     public OrderHistoryPage getOrderHistoryPage() {
         return (orderHistoryPage == null) ? orderHistoryPage = new OrderHistoryPage(driver) : orderHistoryPage;
+    }
+
+    public OrdersPage getOrdersPage() {
+        return (ordersPage == null) ? ordersPage = new OrdersPage(driver) : ordersPage;
     }
 }
