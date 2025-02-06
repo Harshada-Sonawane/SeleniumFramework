@@ -26,14 +26,10 @@ public class LandingPage extends WaitUtils {
     @FindBy(id = "login")
     WebElement loginBtn;
 
-//    @FindBy(css = "#toast-container")
-//    WebElement toasterMsg;
-
     public void login(String username, String password) {
         userName.sendKeys(username);
         userPassword.sendKeys(password);
         loginBtn.click();
-        //waitForInvisibilityOfElement(toasterMsg);
     }
 
     public void openUrl() {

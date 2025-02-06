@@ -46,7 +46,7 @@ public class ProductsPage extends WaitUtils {
         WebElement prodToAdd = addProductToCart(productName);
         prodToAdd.findElement(addToCartBtn).click();
         waitForInvisibilityOfElement(spinner);
-        //waitForVisibilityOfElementLocated(toasterMsg);
+        waitForVisibilityOfElementLocated(toasterMsg);
     }
 
     public void clickCartButton() {
