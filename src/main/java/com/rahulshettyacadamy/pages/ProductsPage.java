@@ -30,7 +30,7 @@ public class ProductsPage extends WaitUtils {
 
     By product = By.cssSelector(".mb-3");
     By addToCartBtn = By.cssSelector(".card-body button:last-of-type");
-    By toasterMsg = By.cssSelector("#toast-container");
+   // By toasterMsg = By.cssSelector("#toast-container");
 
     public List<WebElement> getProductsList() {
         waitForVisibilityOfElementLocated(product);
@@ -46,7 +46,7 @@ public class ProductsPage extends WaitUtils {
         WebElement prodToAdd = addProductToCart(productName);
         prodToAdd.findElement(addToCartBtn).click();
         waitForInvisibilityOfElement(spinner);
-        waitForVisibilityOfElementLocated(toasterMsg);
+        //waitForVisibilityOfElementLocated(toasterMsg);
     }
 
     public void clickCartButton() {
