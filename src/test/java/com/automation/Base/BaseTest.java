@@ -2,6 +2,7 @@ package com.automation.Base;
 
 import com.automation.managers.PageObjectManager;
 import com.automation.pages.LandingPage;
+import com.automation.utilities.DataReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,10 +10,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
 public class BaseTest {
@@ -48,7 +52,7 @@ public class BaseTest {
         return driver;
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public LandingPage launchApplication() throws IOException {
         driver = initializeDriver(); // Ensures driver is not null
         pageObjectManager = new PageObjectManager(driver);
@@ -57,11 +61,18 @@ public class BaseTest {
         return landingPage;
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         if (driver != null) {
             driver.quit(); //Closes all browser windows
             driver = null; //Ensures a fresh driver for the next test
         }
+    }
+
+    @DataProvider
+    public Object[][] getData() throws IOException {
+        List<HashMap<String, String>> data = DataReader.getJsonDataToMap(System.getProperty("user.dir") +
+                "//src//test//java//com//automation//data//PlaceOrder.json");
+        return new Object[][]{{data.get(0)}, {data.get(1)}};
     }
 }

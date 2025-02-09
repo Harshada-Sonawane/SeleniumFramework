@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ErrorValidationTest extends BaseTest {
 
-    @Test()
+    @Test(groups = "Error")
     public void testInvalidLogin() throws IOException {
         LandingPage landingPage = launchApplication();
         landingPage.login("test@test.com", "test");

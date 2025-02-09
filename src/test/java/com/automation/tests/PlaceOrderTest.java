@@ -6,20 +6,21 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class PlaceOrderTest extends BaseTest {
 
     String productName = "BANARSI SAREE";
 
-    @Test()
-    public void testPlaceOrder() throws IOException, InterruptedException {
+    @Test(dataProvider = "getData",groups = {"Purchase"})
+    public void testPlaceOrder(HashMap<String,String> input) throws IOException, InterruptedException {
         LandingPage landingPage = launchApplication();
-        landingPage.login("anshika@gmail.com", "Iamking@000");
+        landingPage.login(input.get("email"), input.get("password"));
         ProductsPage productsPage = pageObjectManager.getProductsPage();
-        productsPage.clickAddToCart(productName);
+        productsPage.clickAddToCart(input.get("productName"));
         productsPage.clickCartHeader();
         MyCartPage myCartPage = pageObjectManager.getMyCartPage();
-        Assert.assertTrue(myCartPage.verifyProductAddedToMyCart(productName));
+        Assert.assertTrue(myCartPage.verifyProductAddedToMyCart(input.get("productName")));
         myCartPage.clickCheckoutButton();
         CheckOutPage checkOutPage = pageObjectManager.getCheckOutPage();
         checkOutPage.selectCountry("india");
