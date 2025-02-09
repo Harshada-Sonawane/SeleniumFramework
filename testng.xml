@@ -3,6 +3,7 @@
     <test name="Test Automation">
         <classes>
             <class name="com.rahulshettyacadamy.tests.PlaceOrderTest" />
+            <class name="com.rahulshettyacadamy.tests.ErrorValidationTest" />
         </classes>
     </test>
 </suite>

@@ -25,6 +25,9 @@ public class LandingPage extends WaitUtils {
     @FindBy(id = "login")
     WebElement loginBtn;
 
+    @FindBy(css = "#toast-container")
+    WebElement toasterMsg;
+
     public void login(String username, String password) {
         userName.sendKeys(username);
         userPassword.sendKeys(password);
@@ -35,5 +38,8 @@ public class LandingPage extends WaitUtils {
         driver.get("https://rahulshettyacademy.com/client");
     }
 
+    public String getErrorMsgInvalidLogin() {
+        return toasterMsg.getText().trim();
+    }
 
 }

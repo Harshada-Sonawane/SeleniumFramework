@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class PlaceOrderTest extends BaseTest {
 
-    String productName = "QWERTY";
+    String productName = "BANARSI SAREE";
 
     @Test()
     public void testPlaceOrder() throws IOException, InterruptedException {
