@@ -1,6 +1,6 @@
-package com.rahulshettyacadamy.managers;
+package com.automation.managers;
 
-import com.rahulshettyacadamy.pages.*;
+import com.automation.pages.*;
 import org.openqa.selenium.WebDriver;
 
 public class PageObjectManager {

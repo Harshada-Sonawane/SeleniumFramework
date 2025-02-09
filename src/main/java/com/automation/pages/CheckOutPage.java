@@ -1,6 +1,6 @@
-package com.rahulshettyacadamy.pages;
+package com.automation.pages;
 
-import com.rahulshettyacadamy.utilities.WaitUtils;
+import com.automation.utilities.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,7 +1,7 @@
-package com.rahulshettyacadamy.tests;
+package com.automation.tests;
 
-import com.rahulshettyacadamy.Base.BaseTest;
-import com.rahulshettyacadamy.pages.*;
+import com.automation.Base.BaseTest;
+import com.automation.pages.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

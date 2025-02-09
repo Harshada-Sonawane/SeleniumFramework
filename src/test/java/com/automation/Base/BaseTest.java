@@ -1,7 +1,7 @@
-package com.rahulshettyacadamy.Base;
+package com.automation.Base;
 
-import com.rahulshettyacadamy.managers.PageObjectManager;
-import com.rahulshettyacadamy.pages.LandingPage;
+import com.automation.managers.PageObjectManager;
+import com.automation.pages.LandingPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
