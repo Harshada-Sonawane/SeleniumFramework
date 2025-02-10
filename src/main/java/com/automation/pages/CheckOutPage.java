@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckOutPage extends WaitUtils {
+public class CheckOutPage extends BasePage {
 
     WebDriver driver;
 
@@ -33,7 +33,7 @@ public class CheckOutPage extends WaitUtils {
     public void selectCountry(String country) {
         Actions a = new Actions(driver);
         a.sendKeys(countryPlaceholder, country).build().perform();
-        waitForVisibilityOfElementLocated(searchResult);
+        waitUtils.waitForVisibilityOfElementLocated(searchResult);
         countryOption.click();
     }
 

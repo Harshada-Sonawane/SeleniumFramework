@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class MyCartPage extends WaitUtils {
+public class MyCartPage extends BasePage {
 
     WebDriver driver;
 

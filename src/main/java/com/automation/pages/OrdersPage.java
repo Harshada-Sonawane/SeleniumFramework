@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class OrdersPage extends WaitUtils {
+public class OrdersPage extends BasePage {
 
     WebDriver driver;
 

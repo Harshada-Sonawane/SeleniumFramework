@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class ProductsPage extends WaitUtils {
+public class ProductsPage extends BasePage {
 
     WebDriver driver;
 
@@ -34,7 +34,7 @@ public class ProductsPage extends WaitUtils {
     By toasterMsg = By.cssSelector("#toast-container");
 
     public List<WebElement> getProductsList() {
-        waitForVisibilityOfElementLocated(product);
+        waitUtils.waitForVisibilityOfElementLocated(product);
         return products;
     }
 
@@ -47,8 +47,8 @@ public class ProductsPage extends WaitUtils {
         try {
             WebElement prodToAdd = addProductToCart(productName);
             prodToAdd.findElement(addToCartBtn).click();
-            waitForInvisibilityOfElement(spinner);
-            waitForVisibilityOfElementLocated(toasterMsg);
+            waitUtils.waitForInvisibilityOfElement(spinner);
+            waitUtils.waitForVisibilityOfElementLocated(toasterMsg);
         } catch (TimeoutException te) {
             te.printStackTrace();
         }
