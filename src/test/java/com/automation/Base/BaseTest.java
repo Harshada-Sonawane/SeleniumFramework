@@ -43,7 +43,7 @@ public class BaseTest {
                 if (browserName.contains("headless")) {
                     options.addArguments("headless");
                 }
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(options);
                 driver.manage().window().setSize(new Dimension(1440,900));
             } else if (browserName.equalsIgnoreCase("firefox")) {
                 WebDriverManager.firefoxdriver().setup();
