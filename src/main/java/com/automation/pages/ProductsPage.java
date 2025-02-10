@@ -1,6 +1,5 @@
 package com.automation.pages;
 
-import com.automation.utilities.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
