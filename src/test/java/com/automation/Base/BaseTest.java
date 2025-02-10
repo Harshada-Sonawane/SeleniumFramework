@@ -29,9 +29,9 @@ public class BaseTest {
         if (driver == null) {
             Properties properties = new Properties();
             FileInputStream fis = new FileInputStream(System.getProperty("user.dir") +
-                    "//src//main//java//resources//config.properties");
+                    "//src//test//resources//config.properties");
             properties.load(fis);
-            String browserName = properties.getProperty("browser");
+            String browserName = System.getProperty("browser") != null ? System.getProperty("browser") : properties.getProperty("browser");
             if (browserName == null) {
                 throw new RuntimeException("Browser name is not specified in config.properties");
             }

@@ -12,6 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <testng.suite>suites/testng.xml</testng.suite>
     </properties>
 
     <dependencies>
@@ -44,4 +45,29 @@
             <version>2.18.2</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>qa</id>
+            <properties>
+                <testng.suite>suites/testng-qa.xml</testng.suite>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${testng.suite}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

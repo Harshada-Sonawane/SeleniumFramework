@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite parallel="tests" name="Test Suite">
+    <groups>
+        <run>
+            <include name="Purchase"/>
+        </run>
+    </groups>
     <test thread-count = "5" name="Place Order">
         <classes>
             <class name="com.automation.tests.PlaceOrderTest" />
