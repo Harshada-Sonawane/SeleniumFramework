@@ -4,8 +4,10 @@ import com.automation.managers.PageObjectManager;
 import com.automation.pages.LandingPage;
 import com.automation.utilities.DataReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
@@ -35,9 +37,14 @@ public class BaseTest {
             if (browserName == null) {
                 throw new RuntimeException("Browser name is not specified in config.properties");
             }
-            if (browserName.equalsIgnoreCase("chrome")) {
+            if (browserName.contains("chrome")) {
+                ChromeOptions options = new ChromeOptions();
                 WebDriverManager.chromedriver().setup();
+                if (browserName.contains("headless")) {
+                    options.addArguments("headless");
+                }
                 driver = new ChromeDriver();
+                driver.manage().window().setSize(new Dimension(1440,900));
             } else if (browserName.equalsIgnoreCase("firefox")) {
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
