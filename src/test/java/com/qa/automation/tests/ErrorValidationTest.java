@@ -1,7 +1,6 @@
-package com.automation.tests;
+package com.qa.automation.tests;
 
-import com.automation.Base.BaseTest;
-import com.automation.pages.LandingPage;
+import com.qa.automation.pages.LandingPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

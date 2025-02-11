@@ -7,12 +7,12 @@
     </groups>
     <test thread-count = "5" name="Place Order">
         <classes>
-            <class name="com.automation.tests.PlaceOrderTest" />
+            <class name="com.qa.automation.tests.PlaceOrderTest" />
         </classes>
     </test>
     <test thread-count = "5" name="Error Validation">
         <classes>
-            <class name="com.automation.tests.ErrorValidationTest" />
+            <class name="com.qa.automation.tests.ErrorValidationTest" />
         </classes>
     </test>
 </suite>

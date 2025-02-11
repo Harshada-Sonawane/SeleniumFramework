@@ -1,6 +1,6 @@
-package com.automation.pages;
+package com.qa.automation.pages;
 
-import com.automation.utilities.WaitUtils;
+import com.qa.automation.utilities.WaitUtils;
 import org.openqa.selenium.WebDriver;
 
 public class BasePage {

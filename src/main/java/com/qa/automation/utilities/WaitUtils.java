@@ -1,4 +1,4 @@
-package com.automation.utilities;
+package com.qa.automation.utilities;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

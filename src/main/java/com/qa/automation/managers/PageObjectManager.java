@@ -1,6 +1,6 @@
-package com.automation.managers;
+package com.qa.automation.managers;
 
-import com.automation.pages.*;
+import com.qa.automation.pages.*;
 import org.openqa.selenium.WebDriver;
 
 public class PageObjectManager {

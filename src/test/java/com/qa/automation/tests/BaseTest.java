@@ -1,8 +1,9 @@
-package com.automation.Base;
+package com.qa.automation.tests;
 
-import com.automation.managers.PageObjectManager;
-import com.automation.pages.LandingPage;
-import com.automation.utilities.DataReader;
+import com.qa.automation.managers.DriverManager;
+import com.qa.automation.managers.PageObjectManager;
+import com.qa.automation.pages.LandingPage;
+import com.qa.automation.utilities.DataReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -28,7 +29,7 @@ public class BaseTest {
     protected PageObjectManager pageObjectManager;
 
     public WebDriver initializeDriver() throws IOException {
-        if (driver == null) {
+        if (DriverManager.getDriver() == null) {
             Properties properties = new Properties();
             FileInputStream fis = new FileInputStream(System.getProperty("user.dir") +
                     "//src//test//resources//config.properties");
@@ -55,8 +56,9 @@ public class BaseTest {
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             driver.manage().window().maximize();
+            DriverManager.setDriver(driver); // Store in DriverManager
         }
-        return driver;
+        return DriverManager.getDriver();
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -70,16 +72,16 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        if (driver != null) {
-            driver.quit(); //Closes all browser windows
-            driver = null; //Ensures a fresh driver for the next test
+        if (DriverManager.getDriver() != null) {
+            DriverManager.getDriver().quit();
+            DriverManager.removeDriver(); // Remove the instance from ThreadLocal
         }
     }
 
     @DataProvider
     public Object[][] getData() throws IOException {
         List<HashMap<String, String>> data = DataReader.getJsonDataToMap(System.getProperty("user.dir") +
-                "//src//test//java//com//automation//data//PlaceOrder.json");
+                "//src//test//resources//data//PlaceOrder.json");
         return new Object[][]{{data.get(0)}, {data.get(1)}};
     }
 }

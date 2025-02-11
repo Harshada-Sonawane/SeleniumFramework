@@ -1,4 +1,4 @@
-package com.automation.pages;
+package com.qa.automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;

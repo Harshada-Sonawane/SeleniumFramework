@@ -1,7 +1,7 @@
-package com.automation.tests;
+package com.qa.automation.tests;
 
-import com.automation.Base.BaseTest;
-import com.automation.pages.*;
+import com.qa.automation.pages.*;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,6 +13,7 @@ public class PlaceOrderTest extends BaseTest {
     String productName = "BANARSI SAREE";
 
     @Test(dataProvider = "getData",groups = {"Purchase"})
+    @Description("Verify place order functionality")
     public void testPlaceOrder(HashMap<String,String> input) throws IOException, InterruptedException {
         LandingPage landingPage = launchApplication();
         landingPage.login(input.get("email"), input.get("password"));
