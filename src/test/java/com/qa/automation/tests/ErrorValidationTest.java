@@ -1,6 +1,5 @@
 package com.qa.automation.tests;
 
-import com.qa.automation.pages.LandingPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,7 +9,6 @@ public class ErrorValidationTest extends BaseTest {
 
     @Test(groups = "Error")
     public void testInvalidLogin() throws IOException {
-        LandingPage landingPage = launchApplication();
         landingPage.login("test@test.com", "test");
         Assert.assertEquals(landingPage.getErrorMsgInvalidLogin(), "Incorrect email or password.");
     }

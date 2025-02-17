@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite parallel="tests" name="Test Suite">
-    <test thread-count = "5" name="Place Order">
+<suite name="Test Suite" parallel="none">
+    <listeners>
+        <listener class-name="com.qa.automation.tests.listeners.TestAllureListener"/>
+    </listeners>
+
+    <test name="Place Order tests">
         <classes>
-            <class name="com.qa.automation.tests.PlaceOrderTest" />
+            <class name="com.qa.automation.tests.PlaceOrderTest"/>
         </classes>
     </test>
-    <test thread-count = "5" name="Error Validation">
+    <test name="Error Validation tests">
         <classes>
-            <class name="com.qa.automation.tests.ErrorValidationTest" />
+            <class name="com.qa.automation.tests.ErrorValidationTest"/>
         </classes>
     </test>
 </suite>

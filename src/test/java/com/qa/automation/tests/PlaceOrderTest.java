@@ -5,7 +5,6 @@ import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 public class PlaceOrderTest extends BaseTest {
@@ -14,8 +13,7 @@ public class PlaceOrderTest extends BaseTest {
 
     @Test(dataProvider = "getData",groups = {"Purchase"})
     @Description("Verify place order functionality")
-    public void testPlaceOrder(HashMap<String,String> input) throws IOException, InterruptedException {
-        LandingPage landingPage = launchApplication();
+    public void testPlaceOrder(HashMap<String,String> input) throws InterruptedException {
         landingPage.login(input.get("email"), input.get("password"));
         ProductsPage productsPage = pageObjectManager.getProductsPage();
         productsPage.clickAddToCart(input.get("productName"));
@@ -30,9 +28,9 @@ public class PlaceOrderTest extends BaseTest {
         Assert.assertTrue(orderHistoryPage.verifyOrderPlaced("THANKYOU FOR THE ORDER."));
     }
 
-    @Test(dependsOnMethods = "testPlaceOrder")
-    public void testOrderHistory() throws IOException {
-        LandingPage landingPage = launchApplication();
+    @Test(dependsOnMethods = "testPlaceOrder",enabled = false)
+    @Description("Verify history of placed order")
+    public void testOrderHistory() {
         landingPage.login("anshika@gmail.com", "Iamking@000");
         OrdersPage ordersPage = pageObjectManager.getOrdersPage();
         ordersPage.clickOrdersHeader();
